@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            display: flext;
+            justify-content: space-between;
+            background-color: seagreen;
+            border: 2px solid green;
+            padding: 10px;
+            text-decoration: none;
+        }
+        li{
+            list-style: none;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'aboutus'}"></a>About US</li>
+            <li>Contact Us</li>
+            <li>Services</li>
+            <li>Projects</li>
+        </ul>
+    </nav>
+
+    <h1>Welcome to Django</h1>
+    
+</body>
+</html>
