@@ -93,6 +93,8 @@ DATABASES = {
         "OPTIONS" : {
             "ssl": {
                 "ca": os.path.join(BASE_DIR,"aiven_ca.pem"),
+                # "ca": os.getenv("PEM_CONT"),
+
             },
             "charset": "utf8mb4",
             "init_command" : "SET sql_mode=STRICT_TRANS_TABLES",
