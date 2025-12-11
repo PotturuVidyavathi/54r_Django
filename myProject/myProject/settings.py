@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()  # this will loads all the variables from env to here
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tepcqsql$o4untf+-p-glkx)=ed=atxq0(-+^*57w60$scx&s&'
+# SECRET_KEY = 'django-insecure-tepcqsql$o4untf+-p-glkx)=ed=atxq0(-+^*57w60$scx&s&'
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,14 +85,18 @@ WSGI_APPLICATION = 'myProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "54r_53r", 
-        "USER" : "root",
-        "PASSWORD" : "3152003",
-        "HOST" : "127.0.0.1",
-        "PORT" : "3306",
+        'NAME': os.getenv("DB_NAME"),  #"54r_53r", 
+        "USER" : os.getenv("DB_USER"),   #"root",
+        "PASSWORD" : os.getenv("DB_PASSWORD"),  
+        "HOST" : os.getenv("DB_HOST"),  
+        "PORT" : os.getenv("DB_PORT"),  #"3306",
         "OPTIONS" : {
+            "ssl": {
+                "ca": os.path.join(BASE_DIR,"aiven_ca.pem"),
+            },
             "charset": "utf8mb4",
-            "init_command" : "SET sql_mode=STRICT_TRANS_TABLES"
+            "init_command" : "SET sql_mode=STRICT_TRANS_TABLES",
+            # "auth_plugin": "caching_sha2_password"
             }       
      }
 }

@@ -19,10 +19,10 @@ from django.urls import path
 from basic.views import sample
 from basic.views import sample1
 from basic.views import sampleInfo,dynamicResponse
-from basic.views import health,login
+from basic.views import health,addStudent
 
 # templates import
-from basic.views import home,aboutus,welcome
+# from basic.views import home,aboutus,welcome
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,10 +31,13 @@ urlpatterns = [
     path("info/",sampleInfo),
     path("dynamic/",dynamicResponse),
     path("health/",health),
-    path('login/',login),
+    path("add/",addStudent),
+
+    
+    # path('login/',login),
     # templates path
-    path('home/',home,name="home"),
-    path('aboutus/',aboutus,name="aboutus"),
-    path("welcome/",welcome,name="welcome")
+    # path('home/',home,name="home"),
+    # path('aboutus/',aboutus,name="aboutus"),
+    # path("welcome/",welcome,name="welcome"),
 
 ]
